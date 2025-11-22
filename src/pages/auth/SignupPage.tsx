@@ -4,11 +4,14 @@ import type { FormEvent } from "react";
 import { Link, useNavigate } from "react-router-dom";
 import { createUserWithEmailAndPassword } from "firebase/auth";
 import { auth } from "../../lib/firebase";
+import { db } from "../../lib/firebase";
+import { doc, setDoc, serverTimestamp } from "firebase/firestore";
 
 const SignupPage: React.FC = () => {
     const navigate = useNavigate();
     const [email, setEmail] = useState("");
     const [password, setPassword] = useState("");
+    const [wantsEmails, setWantsEmails] = useState(true); // <- согласие на рассылки
     const [error, setError] = useState<string | null>(null);
     const [loading, setLoading] = useState(false);
 
@@ -18,7 +21,25 @@ const SignupPage: React.FC = () => {
         setLoading(true);
 
         try {
-            await createUserWithEmailAndPassword(auth, email, password);
+            // 1) создаём пользователя в Firebase Auth
+            const cred = await createUserWithEmailAndPassword(auth, email, password);
+            const user = cred.user;
+
+            // 2) сохраняем профиль в Firestore: email, дата, согласие на рассылки
+            if (user) {
+                const userRef = doc(db, "users", user.uid);
+                await setDoc(
+                    userRef,
+                    {
+                        email: user.email,
+                        createdAt: serverTimestamp(),
+                        notifications: wantsEmails, // true / false
+                    },
+                    { merge: true }
+                );
+            }
+
+            // 3) отправляем на чек-лист
             navigate("/app/checklist");
         } catch (err: unknown) {
             console.error(err);
@@ -180,6 +201,29 @@ const SignupPage: React.FC = () => {
                                     fontSize: 14
                                 }}
                             />
+                        </label>
+
+                        {/* ЧЕКБОКС СОГЛАСИЯ НА РАССЫЛКУ */}
+                        <label
+                            style={{
+                                fontSize: 13,
+                                display: "flex",
+                                alignItems: "flex-start",
+                                gap: 8,
+                                marginTop: 4,
+                                color: "#4b5563"
+                            }}
+                        >
+                            <input
+                                type="checkbox"
+                                checked={wantsEmails}
+                                onChange={(e) => setWantsEmails(e.target.checked)}
+                                style={{ marginTop: 2 }}
+                            />
+                            <span>
+                                Хочу получать на email полезные советы по работе курьером
+                                в Израиле и уведомления о новых возможностях и предложениях.
+                            </span>
                         </label>
 
                         {error && (
