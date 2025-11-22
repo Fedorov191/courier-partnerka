@@ -79,7 +79,7 @@ export const OnboardingChecklist: React.FC = () => {
     const done = Object.values(checklist).filter(Boolean).length;
 
     return (
-        <div style={{ maxWidth: 600, margin: "0 auto", paddingTop: 20 }}>
+        <div style={{ paddingTop: 20 }}>
             <h2>Чек-лист курьера</h2>
             <p style={{ marginBottom: 20 }}>
                 Выполнено: <b>{done}</b> из <b>{CHECKLIST_ITEMS.length}</b>
