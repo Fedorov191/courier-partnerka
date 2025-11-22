@@ -4,6 +4,7 @@ import LoginPage from './pages/auth/LoginPage';
 import SignupPage from './pages/auth/SignupPage';
 import ChecklistPage from './pages/app/ChecklistPage';
 import StepPage from './pages/app/StepPage';
+import PartnersPage from './pages/app/PartnersPage';
 import ProtectedRoute from './components/ProtectedRoute';
 
 function App() {
@@ -29,6 +30,15 @@ function App() {
                 element={
                     <ProtectedRoute>
                         <StepPage />
+                    </ProtectedRoute>
+                }
+            />
+
+            <Route
+                path="/app/partners"
+                element={
+                    <ProtectedRoute>
+                        <PartnersPage />
                     </ProtectedRoute>
                 }
             />
