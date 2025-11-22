@@ -1,3 +1,4 @@
+// src/pages/app/ChecklistPage.tsx
 import React from "react";
 import { Link } from "react-router-dom";
 import { OnboardingChecklist } from "../../components/OnboardingChecklist";
@@ -7,16 +8,17 @@ const ChecklistPage: React.FC = () => {
         <div
             style={{
                 minHeight: "100vh",
-                background: "#020617",
-                color: "#f9fafb",
+                backgroundColor: "#f3f4f6",
+                color: "#111827",
                 fontFamily:
-                    "system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif"
+                    "-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif"
             }}
         >
             <header
                 style={{
-                    borderBottom: "1px solid #111827",
-                    padding: "12px 24px"
+                    borderBottom: "1px solid #e5e7eb",
+                    padding: "12px 24px",
+                    backgroundColor: "#ffffff"
                 }}
             >
                 <div
@@ -35,7 +37,7 @@ const ChecklistPage: React.FC = () => {
                             alignItems: "center",
                             gap: 8,
                             textDecoration: "none",
-                            color: "#f9fafb"
+                            color: "#111827"
                         }}
                     >
                         <div
@@ -49,7 +51,8 @@ const ChecklistPage: React.FC = () => {
                                 alignItems: "center",
                                 justifyContent: "center",
                                 fontSize: 14,
-                                fontWeight: 700
+                                fontWeight: 700,
+                                color: "#ffffff"
                             }}
                         >
                             KS
@@ -59,7 +62,12 @@ const ChecklistPage: React.FC = () => {
 
                     <Link
                         to="/app/partners"
-                        style={{ color: "#4ea1ff", textDecoration: "none", fontSize: 14 }}
+                        style={{
+                            color: "#0a63ff",
+                            textDecoration: "none",
+                            fontSize: 14,
+                            fontWeight: 500
+                        }}
                     >
                         Все партнёрские предложения
                     </Link>
@@ -68,8 +76,9 @@ const ChecklistPage: React.FC = () => {
 
             <main
                 style={{
-                    padding: "24px 24px 40px",
-                    maxWidth: "100%"
+                    maxWidth: 960,
+                    margin: "0 auto",
+                    padding: "24px 24px 40px"
                 }}
             >
                 <h1 style={{ fontSize: 24, marginBottom: 12 }}>
@@ -78,7 +87,7 @@ const ChecklistPage: React.FC = () => {
                 <p
                     style={{
                         fontSize: 14,
-                        opacity: 0.8,
+                        color: "#4b5563",
                         marginBottom: 20
                     }}
                 >

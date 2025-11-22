@@ -1,3 +1,4 @@
+// src/pages/app/StepPage.tsx
 
 import { Link, useParams } from "react-router-dom";
 import { CHECKLIST_ITEMS } from "../../checklistItems";
@@ -11,13 +12,15 @@ export default function StepPage() {
             <div
                 style={{
                     minHeight: "100vh",
-                    background: "#020617",
-                    color: "#f9fafb",
-                    padding: 24
+                    backgroundColor: "#f3f4f6",
+                    color: "#111827",
+                    padding: 24,
+                    fontFamily:
+                        "-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif"
                 }}
             >
                 <p>Не указан шаг.</p>
-                <Link to="/app/checklist" style={{ color: "#4ea1ff" }}>
+                <Link to="/app/checklist" style={{ color: "#0a63ff" }}>
                     ← Назад к чек-листу
                 </Link>
             </div>
@@ -33,16 +36,17 @@ export default function StepPage() {
         <div
             style={{
                 minHeight: "100vh",
-                background: "#020617",
-                color: "#f9fafb",
+                backgroundColor: "#f3f4f6",
+                color: "#111827",
                 fontFamily:
-                    "system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif"
+                    "-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif"
             }}
         >
             <header
                 style={{
-                    borderBottom: "1px solid #111827",
-                    padding: "12px 24px"
+                    borderBottom: "1px solid #e5e7eb",
+                    padding: "12px 24px",
+                    backgroundColor: "#ffffff"
                 }}
             >
                 <div
@@ -57,7 +61,7 @@ export default function StepPage() {
                     <Link
                         to="/app/checklist"
                         style={{
-                            color: "#f9fafb",
+                            color: "#0a63ff",
                             textDecoration: "none",
                             fontSize: 14
                         }}
@@ -67,7 +71,11 @@ export default function StepPage() {
 
                     <Link
                         to="/app/partners"
-                        style={{ color: "#4ea1ff", textDecoration: "none", fontSize: 14 }}
+                        style={{
+                            color: "#0a63ff",
+                            textDecoration: "none",
+                            fontSize: 14
+                        }}
                     >
                         Партнёры
                     </Link>
@@ -89,7 +97,7 @@ export default function StepPage() {
                     <p
                         style={{
                             fontSize: 14,
-                            opacity: 0.8,
+                            color: "#4b5563",
                             marginBottom: 20
                         }}
                     >
@@ -97,21 +105,21 @@ export default function StepPage() {
                     </p>
                 )}
 
-                <div style={{ marginBottom: 32, fontSize: 14, opacity: 0.9 }}>
+                <div style={{ marginBottom: 32, fontSize: 14, color: "#4b5563" }}>
                     <p>
                         Здесь позже будет расширенный контент по этому шагу: подробные
                         инструкции, чек-листы внутри шага, видео и полезные советы.
                     </p>
                 </div>
 
-                <hr style={{ borderColor: "#111827", margin: "24px 0" }} />
+                <hr style={{ borderColor: "#e5e7eb", margin: "24px 0" }} />
 
                 <h2 style={{ fontSize: 18, marginBottom: 12 }}>
                     Партнёрские предложения по этому шагу
                 </h2>
 
                 {relatedPartners.length === 0 && (
-                    <p style={{ fontSize: 14, opacity: 0.8 }}>
+                    <p style={{ fontSize: 14, color: "#6b7280" }}>
                         Для этого шага пока нет партнёрских предложений.
                     </p>
                 )}
@@ -122,9 +130,10 @@ export default function StepPage() {
                             key={partner.id}
                             style={{
                                 borderRadius: 12,
-                                border: "1px solid #111827",
+                                border: "1px solid #e5e7eb",
                                 padding: 16,
-                                background: "#020617"
+                                backgroundColor: "#ffffff",
+                                boxShadow: "0 2px 6px rgba(15,23,42,0.04)"
                             }}
                         >
                             <h3 style={{ marginBottom: 6, fontSize: 16 }}>
@@ -133,7 +142,7 @@ export default function StepPage() {
                             <p
                                 style={{
                                     fontSize: 14,
-                                    opacity: 0.85,
+                                    color: "#4b5563",
                                     marginBottom: 10
                                 }}
                             >
@@ -143,7 +152,7 @@ export default function StepPage() {
                                 href={partner.url}
                                 target="_blank"
                                 rel="noreferrer"
-                                style={{ color: "#4ea1ff", fontSize: 14 }}
+                                style={{ color: "#0a63ff", fontSize: 14 }}
                             >
                                 Перейти по ссылке
                             </a>

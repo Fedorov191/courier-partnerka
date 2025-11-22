@@ -1,6 +1,6 @@
+// src/pages/auth/SignupPage.tsx
 import React, { useState } from "react";
 import type { FormEvent } from "react";
-
 import { Link, useNavigate } from "react-router-dom";
 import { createUserWithEmailAndPassword } from "firebase/auth";
 import { auth } from "../../lib/firebase";
@@ -20,7 +20,7 @@ const SignupPage: React.FC = () => {
         try {
             await createUserWithEmailAndPassword(auth, email, password);
             navigate("/app/checklist");
-        } catch (err) {
+        } catch (err: unknown) {
             console.error(err);
             setError("Не удалось создать аккаунт. Возможно, email уже используется.");
         } finally {
@@ -32,19 +32,19 @@ const SignupPage: React.FC = () => {
         <div
             style={{
                 minHeight: "100vh",
-                background: "#020617",
-                color: "#f9fafb",
+                backgroundColor: "#f3f4f6",
+                color: "#111827",
                 display: "flex",
                 flexDirection: "column",
                 fontFamily:
-                    "system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif"
+                    "-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif"
             }}
         >
-            {/* Шапка */}
             <header
                 style={{
-                    borderBottom: "1px solid #111827",
-                    padding: "12px 24px"
+                    borderBottom: "1px solid #e5e7eb",
+                    padding: "12px 24px",
+                    backgroundColor: "#ffffff"
                 }}
             >
                 <div
@@ -63,7 +63,7 @@ const SignupPage: React.FC = () => {
                             alignItems: "center",
                             gap: 8,
                             textDecoration: "none",
-                            color: "#f9fafb"
+                            color: "#111827"
                         }}
                     >
                         <div
@@ -77,7 +77,8 @@ const SignupPage: React.FC = () => {
                                 alignItems: "center",
                                 justifyContent: "center",
                                 fontSize: 14,
-                                fontWeight: 700
+                                fontWeight: 700,
+                                color: "#ffffff"
                             }}
                         >
                             KS
@@ -89,7 +90,7 @@ const SignupPage: React.FC = () => {
                         to="/login"
                         style={{
                             fontSize: 14,
-                            color: "#e5e7eb",
+                            color: "#4b5563",
                             textDecoration: "none"
                         }}
                     >
@@ -98,7 +99,6 @@ const SignupPage: React.FC = () => {
                 </div>
             </header>
 
-            {/* Контент */}
             <main
                 style={{
                     flex: 1,
@@ -113,11 +113,10 @@ const SignupPage: React.FC = () => {
                         width: "100%",
                         maxWidth: 400,
                         borderRadius: 16,
-                        border: "1px solid #111827",
-                        background:
-                            "radial-gradient(circle at top, rgba(14,165,233,0.22), transparent 55%), #020617",
+                        border: "1px solid #e5e7eb",
+                        backgroundColor: "#ffffff",
                         padding: 24,
-                        boxShadow: "0 18px 45px rgba(0,0,0,0.55)"
+                        boxShadow: "0 18px 45px rgba(15,23,42,0.06)"
                     }}
                 >
                     <h1
@@ -131,15 +130,18 @@ const SignupPage: React.FC = () => {
                     <p
                         style={{
                             fontSize: 14,
-                            opacity: 0.8,
+                            color: "#4b5563",
                             marginBottom: 20
                         }}
                     >
-                        Создайте аккаунт, чтобы сохранить ваш чек-лист курьера и
+                        Создайте аккаунт, чтобы сохранять свой чек-лист курьера и
                         прогресс по шагам.
                     </p>
 
-                    <form onSubmit={handleSubmit} style={{ display: "flex", flexDirection: "column", gap: 12 }}>
+                    <form
+                        onSubmit={handleSubmit}
+                        style={{ display: "flex", flexDirection: "column", gap: 12 }}
+                    >
                         <label style={{ fontSize: 14 }}>
                             Email
                             <input
@@ -152,9 +154,9 @@ const SignupPage: React.FC = () => {
                                     width: "100%",
                                     padding: "8px 10px",
                                     borderRadius: 8,
-                                    border: "1px solid #1f2937",
-                                    background: "#020617",
-                                    color: "#f9fafb",
+                                    border: "1px solid #d1d5db",
+                                    background: "#ffffff",
+                                    color: "#111827",
                                     fontSize: 14
                                 }}
                             />
@@ -172,9 +174,9 @@ const SignupPage: React.FC = () => {
                                     width: "100%",
                                     padding: "8px 10px",
                                     borderRadius: 8,
-                                    border: "1px solid #1f2937",
-                                    background: "#020617",
-                                    color: "#f9fafb",
+                                    border: "1px solid #d1d5db",
+                                    background: "#ffffff",
+                                    color: "#111827",
                                     fontSize: 14
                                 }}
                             />
@@ -185,7 +187,7 @@ const SignupPage: React.FC = () => {
                                 style={{
                                     marginTop: 4,
                                     fontSize: 13,
-                                    color: "#f97373"
+                                    color: "#b91c1c"
                                 }}
                             >
                                 {error}
@@ -202,7 +204,7 @@ const SignupPage: React.FC = () => {
                                 border: "none",
                                 background:
                                     "linear-gradient(135deg, #22c55e, #0ea5e9)",
-                                color: "#020617",
+                                color: "#ffffff",
                                 fontWeight: 700,
                                 fontSize: 14,
                                 cursor: loading ? "default" : "pointer",
@@ -217,13 +219,13 @@ const SignupPage: React.FC = () => {
                         style={{
                             marginTop: 12,
                             fontSize: 13,
-                            opacity: 0.8
+                            color: "#4b5563"
                         }}
                     >
                         Уже есть аккаунт?{" "}
                         <Link
                             to="/login"
-                            style={{ color: "#4ea1ff", textDecoration: "none" }}
+                            style={{ color: "#0a63ff", textDecoration: "none" }}
                         >
                             Войти
                         </Link>

@@ -1,5 +1,4 @@
 // src/pages/LandingPage.tsx
-
 import React from "react";
 import { Link } from "react-router-dom";
 
@@ -8,16 +7,18 @@ const LandingPage: React.FC = () => {
         <div
             style={{
                 minHeight: "100vh",
-                background: "#020617", // тёмный фон
-                color: "#f9fafb",
-                fontFamily: "system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif"
+                backgroundColor: "#f3f4f6",
+                color: "#111827",
+                fontFamily:
+                    "-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif"
             }}
         >
             {/* Шапка */}
             <header
                 style={{
-                    borderBottom: "1px solid #111827",
-                    padding: "16px 24px"
+                    borderBottom: "1px solid #e5e7eb",
+                    padding: "12px 24px",
+                    backgroundColor: "#ffffff"
                 }}
             >
                 <div
@@ -30,7 +31,16 @@ const LandingPage: React.FC = () => {
                         gap: 16
                     }}
                 >
-                    <div style={{ display: "flex", alignItems: "center", gap: 8 }}>
+                    <Link
+                        to="/"
+                        style={{
+                            display: "flex",
+                            alignItems: "center",
+                            gap: 8,
+                            textDecoration: "none",
+                            color: "#111827"
+                        }}
+                    >
                         <div
                             style={{
                                 width: 32,
@@ -42,7 +52,8 @@ const LandingPage: React.FC = () => {
                                 alignItems: "center",
                                 justifyContent: "center",
                                 fontSize: 16,
-                                fontWeight: 700
+                                fontWeight: 700,
+                                color: "#ffffff"
                             }}
                         >
                             KS
@@ -54,18 +65,18 @@ const LandingPage: React.FC = () => {
                             <div
                                 style={{
                                     fontSize: 12,
-                                    opacity: 0.7
+                                    color: "#6b7280"
                                 }}
                             >
                                 Израиль • курьеры • репатрианты
                             </div>
                         </div>
-                    </div>
+                    </Link>
 
                     <nav style={{ display: "flex", gap: 12, fontSize: 14 }}>
                         <Link
                             to="/login"
-                            style={{ color: "#e5e7eb", textDecoration: "none" }}
+                            style={{ color: "#4b5563", textDecoration: "none" }}
                         >
                             Войти
                         </Link>
@@ -75,7 +86,7 @@ const LandingPage: React.FC = () => {
                                 padding: "6px 12px",
                                 borderRadius: 999,
                                 background: "#22c55e",
-                                color: "#020617",
+                                color: "#ffffff",
                                 textDecoration: "none",
                                 fontWeight: 600
                             }}
@@ -86,7 +97,7 @@ const LandingPage: React.FC = () => {
                 </div>
             </header>
 
-            {/* Основной контент */}
+            {/* Контент */}
             <main
                 style={{
                     maxWidth: 960,
@@ -94,11 +105,10 @@ const LandingPage: React.FC = () => {
                     padding: "32px 24px 48px"
                 }}
             >
-                {/* Hero */}
                 <section
                     style={{
                         display: "grid",
-                        gridTemplateColumns: "minmax(0, 1.4fr) minmax(0, 1fr)",
+                        gridTemplateColumns: "minmax(0, 1.3fr) minmax(0, 1fr)",
                         gap: 32,
                         alignItems: "center"
                     }}
@@ -111,20 +121,13 @@ const LandingPage: React.FC = () => {
                                 gap: 8,
                                 padding: "4px 10px",
                                 borderRadius: 999,
-                                background: "rgba(15,23,42,0.9)",
-                                border: "1px solid #1f2937",
+                                background: "#e5f8f0",
+                                border: "1px solid #bbf7d0",
                                 fontSize: 12,
-                                marginBottom: 12
+                                marginBottom: 12,
+                                color: "#166534"
                             }}
                         >
-                            <span
-                                style={{
-                                    width: 8,
-                                    height: 8,
-                                    borderRadius: "999px",
-                                    background: "#22c55e"
-                                }}
-                            />
                             Онлайн-инструкция для курьеров в Израиле
                         </div>
 
@@ -137,13 +140,13 @@ const LandingPage: React.FC = () => {
                         >
                             Путь курьера в Израиле
                             <br />
-                            без хаоса и лишних нервов
+                            по понятному чек-листу
                         </h1>
 
                         <p
                             style={{
                                 fontSize: 15,
-                                opacity: 0.85,
+                                color: "#4b5563",
                                 marginBottom: 20
                             }}
                         >
@@ -159,14 +162,14 @@ const LandingPage: React.FC = () => {
                                 padding: 0,
                                 margin: "0 0 24px",
                                 fontSize: 14,
-                                opacity: 0.9
+                                color: "#374151"
                             }}
                         >
                             <li style={{ marginBottom: 6 }}>
-                                • Пошаговый чек-лист: документы, техника, компании, деньги
+                                • Чёткий чек-лист: документы, техника, компании, деньги
                             </li>
                             <li style={{ marginBottom: 6 }}>
-                                • Практические инструкции без воды, на основе реального опыта
+                                • Практические шаги без воды, на основе реального опыта
                             </li>
                             <li>
                                 • Полезные сервисы и контакты на каждом шаге пути
@@ -181,7 +184,7 @@ const LandingPage: React.FC = () => {
                                     borderRadius: 999,
                                     background:
                                         "linear-gradient(135deg, #22c55e, #0ea5e9)",
-                                    color: "#020617",
+                                    color: "#ffffff",
                                     textDecoration: "none",
                                     fontWeight: 700,
                                     fontSize: 14
@@ -194,10 +197,11 @@ const LandingPage: React.FC = () => {
                                 style={{
                                     padding: "10px 16px",
                                     borderRadius: 999,
-                                    border: "1px solid #374151",
-                                    color: "#e5e7eb",
+                                    border: "1px solid #d1d5db",
+                                    color: "#374151",
                                     textDecoration: "none",
-                                    fontSize: 14
+                                    fontSize: 14,
+                                    backgroundColor: "#ffffff"
                                 }}
                             >
                                 Уже есть аккаунт? Войти
@@ -205,22 +209,20 @@ const LandingPage: React.FC = () => {
                         </div>
                     </div>
 
-                    {/* Правая колонка — “карточка” с шагами */}
                     <div>
                         <div
                             style={{
                                 borderRadius: 16,
-                                border: "1px solid #1f2937",
-                                background:
-                                    "radial-gradient(circle at top, rgba(34,197,94,0.22), transparent 55%), #020617",
+                                border: "1px solid #e5e7eb",
+                                backgroundColor: "#ffffff",
                                 padding: 16,
-                                boxShadow: "0 18px 45px rgba(0,0,0,0.55)"
+                                boxShadow: "0 18px 45px rgba(15,23,42,0.08)"
                             }}
                         >
                             <div
                                 style={{
                                     fontSize: 13,
-                                    opacity: 0.8,
+                                    color: "#6b7280",
                                     marginBottom: 8
                                 }}
                             >
@@ -233,7 +235,8 @@ const LandingPage: React.FC = () => {
                                     margin: 0,
                                     display: "flex",
                                     flexDirection: "column",
-                                    gap: 6
+                                    gap: 6,
+                                    color: "#374151"
                                 }}
                             >
                                 <li>Открыть самозанятость (эссек патур / мурше)</li>
@@ -245,7 +248,7 @@ const LandingPage: React.FC = () => {
                             <div
                                 style={{
                                     fontSize: 12,
-                                    opacity: 0.75,
+                                    color: "#6b7280",
                                     marginTop: 12
                                 }}
                             >
@@ -256,7 +259,6 @@ const LandingPage: React.FC = () => {
                     </div>
                 </section>
 
-                {/* Блок "Для кого" */}
                 <section style={{ marginTop: 40 }}>
                     <h2 style={{ fontSize: 20, marginBottom: 12 }}>Для кого это</h2>
                     <div
@@ -270,15 +272,15 @@ const LandingPage: React.FC = () => {
                         <div
                             style={{
                                 borderRadius: 12,
-                                border: "1px solid #111827",
+                                border: "1px solid #e5e7eb",
                                 padding: 14,
-                                background: "#020617"
+                                background: "#ffffff"
                             }}
                         >
                             <div style={{ fontWeight: 600, marginBottom: 6 }}>
                                 Новые репатрианты
                             </div>
-                            <div style={{ opacity: 0.85 }}>
+                            <div style={{ color: "#4b5563" }}>
                                 Тем, кто только планирует переезд или недавно приехал и
                                 хочет быстро начать зарабатывать, не разбираясь в местных
                                 нюансах.
@@ -287,15 +289,15 @@ const LandingPage: React.FC = () => {
                         <div
                             style={{
                                 borderRadius: 12,
-                                border: "1px solid #111827",
+                                border: "1px solid #e5e7eb",
                                 padding: 14,
-                                background: "#020617"
+                                background: "#ffffff"
                             }}
                         >
                             <div style={{ fontWeight: 600, marginBottom: 6 }}>
                                 Уже работающие курьеры
                             </div>
-                            <div style={{ opacity: 0.85 }}>
+                            <div style={{ color: "#4b5563" }}>
                                 Тем, кто хочет навести порядок: в документах, налогах,
                                 расходах на скутер и оптимизировать доход.
                             </div>
@@ -303,15 +305,15 @@ const LandingPage: React.FC = () => {
                         <div
                             style={{
                                 borderRadius: 12,
-                                border: "1px solid #111827",
+                                border: "1px solid #e5e7eb",
                                 padding: 14,
-                                background: "#020617"
+                                background: "#ffffff"
                             }}
                         >
                             <div style={{ fontWeight: 600, marginBottom: 6 }}>
                                 Те, кто ищет понятный план
                             </div>
-                            <div style={{ opacity: 0.85 }}>
+                            <div style={{ color: "#4b5563" }}>
                                 Если тебя пугают бюрократия, иврит и «а с чего вообще
                                 начать» — здесь всё разложено по шагам.
                             </div>
@@ -320,13 +322,13 @@ const LandingPage: React.FC = () => {
                 </section>
             </main>
 
-            {/* Футер */}
             <footer
                 style={{
-                    borderTop: "1px solid #111827",
+                    borderTop: "1px solid #e5e7eb",
                     padding: "12px 24px",
                     fontSize: 12,
-                    opacity: 0.65
+                    color: "#6b7280",
+                    backgroundColor: "#ffffff"
                 }}
             >
                 <div style={{ maxWidth: 960, margin: "0 auto" }}>

@@ -1,3 +1,4 @@
+// src/components/OnboardingChecklist.tsx
 import React, { useEffect, useState } from "react";
 import { onAuthStateChanged } from "firebase/auth";
 import type { User } from "firebase/auth";
@@ -14,7 +15,6 @@ export const OnboardingChecklist: React.FC = () => {
     const [loading, setLoading] = useState(true);
     const [error, setError] = useState<string | null>(null);
 
-    // слушаем авторизацию пользователя
     useEffect(() => {
         const unsub = onAuthStateChanged(auth, async (user) => {
             try {
@@ -29,7 +29,6 @@ export const OnboardingChecklist: React.FC = () => {
                 const userRef = doc(db, "users", user.uid);
                 const snap = await getDoc(userRef);
 
-                // создаём базовое состояние чек-листа
                 const defaultState: ChecklistState = {};
                 CHECKLIST_ITEMS.forEach((item) => {
                     defaultState[item.id] = false;
@@ -41,15 +40,12 @@ export const OnboardingChecklist: React.FC = () => {
                     const merged = { ...defaultState, ...saved };
 
                     setChecklist(merged);
-
-                    // обновляем Firestore свежими пунктами
                     await setDoc(userRef, { checklist: merged }, { merge: true });
                 } else {
-                    // создаём новый документ пользователю
                     await setDoc(userRef, { checklist: defaultState });
                     setChecklist(defaultState);
                 }
-            } catch (err) {
+            } catch (err: unknown) {
                 console.error(err);
                 setError("Ошибка доступа к базе данных. Проверь правила Firestore.");
             } finally {
@@ -60,7 +56,6 @@ export const OnboardingChecklist: React.FC = () => {
         return () => unsub();
     }, []);
 
-    // переключаем галочку
     const toggle = async (id: string) => {
         if (!firebaseUser) return;
 
@@ -71,17 +66,16 @@ export const OnboardingChecklist: React.FC = () => {
         await updateDoc(userRef, { checklist: updated });
     };
 
-    // отображение состояний
     if (loading) return <p>Загрузка чек-листа...</p>;
-    if (error) return <p style={{ color: "red" }}>{error}</p>;
+    if (error) return <p style={{ color: "#b91c1c" }}>{error}</p>;
     if (!firebaseUser) return <p>Войдите, чтобы видеть чек-лист.</p>;
 
     const done = Object.values(checklist).filter(Boolean).length;
 
     return (
-        <div style={{ paddingTop: 20 }}>
-            <h2>Чек-лист курьера</h2>
-            <p style={{ marginBottom: 20 }}>
+        <div style={{ paddingTop: 12 }}>
+            <h2 style={{ fontSize: 20, marginBottom: 8 }}>Чек-лист курьера</h2>
+            <p style={{ fontSize: 14, color: "#4b5563", marginBottom: 16 }}>
                 Выполнено: <b>{done}</b> из <b>{CHECKLIST_ITEMS.length}</b>
             </p>
 
@@ -90,35 +84,40 @@ export const OnboardingChecklist: React.FC = () => {
                     <li
                         key={item.id}
                         style={{
-                            padding: "12px 0",
-                            borderBottom: "1px solid #333",
+                            padding: "10px 0",
+                            borderBottom: "1px solid #e5e7eb",
                             display: "flex",
                             alignItems: "flex-start",
-                            gap: "12px"
+                            gap: 12
                         }}
                     >
                         <input
                             type="checkbox"
                             checked={checklist[item.id] || false}
                             onChange={() => toggle(item.id)}
-                            style={{ marginTop: 5 }}
+                            style={{ marginTop: 4 }}
                         />
 
                         <div>
-                            <div style={{ fontWeight: "bold" }}>
+                            <div style={{ fontWeight: 600, fontSize: 15 }}>
                                 <Link
                                     to={`/app/step/${item.id}`}
                                     style={{
-                                        color: "#4ea1ff",
+                                        color: "#0a63ff",
                                         textDecoration: "none"
                                     }}
                                 >
                                     {item.title}
                                 </Link>
                             </div>
-
                             {item.description && (
-                                <div style={{ opacity: 0.7, fontSize: 14, marginTop: 4 }}>
+                                <div
+                                    style={{
+                                        fontSize: 13,
+                                        color: "#4b5563",
+                                        marginTop: 4
+                                    }}
+                                >
                                     {item.description}
                                 </div>
                             )}
